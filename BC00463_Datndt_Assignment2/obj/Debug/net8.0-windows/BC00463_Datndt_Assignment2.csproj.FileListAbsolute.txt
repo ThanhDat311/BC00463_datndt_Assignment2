@@ -1,0 +1,17 @@
+D:\Se07201\BC00463_Datndt_Assignment2\bin\Debug\net8.0-windows\BC00463_Datndt_Assignment2.exe
+D:\Se07201\BC00463_Datndt_Assignment2\bin\Debug\net8.0-windows\BC00463_Datndt_Assignment2.deps.json
+D:\Se07201\BC00463_Datndt_Assignment2\bin\Debug\net8.0-windows\BC00463_Datndt_Assignment2.runtimeconfig.json
+D:\Se07201\BC00463_Datndt_Assignment2\bin\Debug\net8.0-windows\BC00463_Datndt_Assignment2.dll
+D:\Se07201\BC00463_Datndt_Assignment2\bin\Debug\net8.0-windows\BC00463_Datndt_Assignment2.pdb
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_Datndt_Assignment2.Form1.resources
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_Datndt_Assignment2.csproj.GenerateResource.cache
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_Datndt_Assignment2.GeneratedMSBuildEditorConfig.editorconfig
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_Datndt_Assignment2.AssemblyInfoInputs.cache
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_Datndt_Assignment2.AssemblyInfo.cs
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_Datndt_Assignment2.csproj.CoreCompileInputs.cache
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_Datndt_Assignment2.dll
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\refint\BC00463_Datndt_Assignment2.dll
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_Datndt_Assignment2.pdb
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_Datndt_Assignment2.genruntimeconfig.cache
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\ref\BC00463_Datndt_Assignment2.dll
+D:\Se07201\BC00463_Datndt_Assignment2\obj\Debug\net8.0-windows\BC00463_datndt_assignment2.Form2.resources
