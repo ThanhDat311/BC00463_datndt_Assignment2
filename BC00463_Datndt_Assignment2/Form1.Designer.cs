@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btnClear = new Button();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -45,7 +46,6 @@
             label6 = new Label();
             cboArrange = new ComboBox();
             label7 = new Label();
-            btnClear = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -70,6 +70,16 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Calculator";
+            // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(22, 370);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(94, 29);
+            btnClear.TabIndex = 14;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // label5
             // 
@@ -174,7 +184,7 @@
             lvWaterBill.GridLines = true;
             lvWaterBill.Location = new Point(371, 52);
             lvWaterBill.Name = "lvWaterBill";
-            lvWaterBill.Size = new Size(742, 376);
+            lvWaterBill.Size = new Size(552, 376);
             lvWaterBill.TabIndex = 1;
             lvWaterBill.UseCompatibleStateImageBehavior = false;
             lvWaterBill.SelectedIndexChanged += lvWaterBill_SelectedIndexChanged;
@@ -199,7 +209,7 @@
             // cboArrange
             // 
             cboArrange.FormattingEnabled = true;
-            cboArrange.Location = new Point(772, 20);
+            cboArrange.Location = new Point(736, 20);
             cboArrange.Name = "cboArrange";
             cboArrange.Size = new Size(151, 28);
             cboArrange.TabIndex = 4;
@@ -208,27 +218,17 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(701, 23);
+            label7.Location = new Point(665, 23);
             label7.Name = "label7";
             label7.Size = new Size(65, 20);
             label7.TabIndex = 5;
             label7.Text = "Arrange:";
             // 
-            // btnClear
-            // 
-            btnClear.Location = new Point(22, 370);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new Size(94, 29);
-            btnClear.TabIndex = 14;
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += btnClear_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1150, 450);
+            ClientSize = new Size(930, 450);
             Controls.Add(label7);
             Controls.Add(cboArrange);
             Controls.Add(label6);

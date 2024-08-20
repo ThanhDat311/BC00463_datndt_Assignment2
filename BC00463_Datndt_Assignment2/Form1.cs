@@ -20,16 +20,13 @@ namespace BC00463_datndt_assignment2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             // Initialize customer types list
-
             cboTypeOfCustomer.Items.Add("Household customer");
             cboTypeOfCustomer.Items.Add("Administration agency, public services");
             cboTypeOfCustomer.Items.Add("Production units");
             cboTypeOfCustomer.Items.Add("Business services");
 
             // Configure the ListView
-
             lvWaterBill.View = View.Details;
             lvWaterBill.Columns.Add("Customer Name", 200);
             lvWaterBill.Columns.Add("Last Month Water Meter", 200);
@@ -44,21 +41,22 @@ namespace BC00463_datndt_assignment2
             cboArrange.Items.Add("Sort by Total Bill (Low to High)");
             cboArrange.Items.Add("Sort by Total Bill (High to Low)");
         }
-
-       
-
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             // Get input data from form fields
 
+            // Get the customer name from the text box
             string customername = txtCustomerName.Text.Trim();
+            // Get the type of customer from the combo box
             string customertype = cboTypeOfCustomer.Text.Trim();
+            // Initialize the number of members to 0
             int numberofmember = 0;
+            // Initialize the last month water meter reading to 0
             double lastmonthwatermeter = 0;
+            // Initialize the this month water meter reading to 0
             double thismonthwatermeter = 0;
 
             // Validate input data
-
             if (customername == "")
             {
                 MessageBox.Show("Please enter the customer's name", "Validation error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -92,37 +90,45 @@ namespace BC00463_datndt_assignment2
                 return;
             }
             
-
-
             // Calculate water bill
 
             var waterBill = Calculator(customertype, numberofmember, lastmonthwatermeter, thismonthwatermeter);
 
             // Display result in ListView
 
+            // Create a new ListViewItem with the customer name
             ListViewItem item = new ListViewItem(customername);
+            // Add the last month water meter reading to the item
             item.SubItems.Add(lastmonthwatermeter.ToString());
+            // Add the this month water meter reading to the item
             item.SubItems.Add(thismonthwatermeter.ToString());
+            // Add the amount of water used to item
             item.SubItems.Add(waterBill.Item1.ToString());
+            // Add the total amount to item
             item.SubItems.Add(waterBill.Item2.ToString());
+            // Add the item to the ListView
             lvWaterBill.Items.Add(item);
 
 
             // Store data in the list of invoices
 
+            // Create a new Invoice object and assign the values to its properties
             Invoice invoice = new Invoice
             {
+                // Assign the customer's name to the CustomerName property
                 CustomerName = customername,
+                // Assign the last month's water meter reading to the LastMonthWaterMeter property
                 LastMonthWaterMeter = lastmonthwatermeter,
+                // Assign this month's water meter reading to the ThisMonthWaterMeter property
                 ThisMonthWaterMeter = thismonthwatermeter,
+                // Assign the water consumption to the Consumption property
                 Consumption = waterBill.Item1,
+                // Assign the water bill to the WaterMoney property
                 WaterMoney = waterBill.Item2,
             };
 
+            // Add the new Invoice object to the Invoices list
             Invoices.Add(invoice);
-
-
-
         }
 
         private void cboTypeOfCustomer_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,12 +151,14 @@ namespace BC00463_datndt_assignment2
 
         private (double, double) Calculator(string customertype, int numberofmember, double lastmonthwatermeter, double thismonthwatermeter)
         {
+            // Calculate the water consumption this month
             double consumption = thismonthwatermeter - lastmonthwatermeter;
             double waterMoney = 0;
 
             // Check if the water consumption this month is negative.
             if (consumption < 0) 
             {
+                // Show a message box to inform the user that the water consumption this month is negative.
                 MessageBox.Show
                     (
                     "Please check the water information from last month and this month",
@@ -161,35 +169,47 @@ namespace BC00463_datndt_assignment2
             // Calculate water money based on customer type
             if (customertype == "Household customer")
             {
+                // Calculate the average consumption per person
                 double averagePerson = consumption / numberofmember;
 
+                // If the average consumption per person is less than 10
                 if (averagePerson < 10)
                 {
+                    // Calculate the water money based on the consumption and the price of water
                     waterMoney = consumption * 5973;
                 }
+                // If the average consumption per person is between 10 and 20
                 else if (averagePerson >= 10 && averagePerson < 20)
                 {
+                    // Calculate the water money based on the consumption and the price of water
                     waterMoney = consumption * 7052;
                 }
+                // If the average consumption per person is between 20 and 30
                 else if (averagePerson >= 20 && averagePerson < 30)
                 {
+                    // Calculate the water money based on the consumption and the price of water
                     waterMoney = consumption * 8699;
                 }
+                // If the average consumption per person is 30 or more
                 else if (averagePerson >= 30)
                 {
+                    // Calculate the water money based on the consumption and the price of water
                     waterMoney = consumption * 15929;
                 }
             }
             else if (customertype == "Administration agency, public services")
             {
+                // Calculate water money for administration agency, public services
                 waterMoney = consumption * 9955;
             }
             else if (customertype == "Production units")
             {
+                // Calculate water money for production units
                 waterMoney = consumption * 11615;
             }
             else if (customertype == "Business services")
             {
+                // Calculate water money for business services
                 waterMoney = consumption * 22068;
             }
 
@@ -249,14 +269,19 @@ namespace BC00463_datndt_assignment2
         // Invoice class representing an invoice
         public class Invoice
         {
+            // Customer name
             public string CustomerName { get; set;}
 
+            // Last month's water meter reading
             public double LastMonthWaterMeter { get; set; }
 
+            // This month's water meter reading
             public double ThisMonthWaterMeter { get; set; }
 
+            // Water consumption
             public double Consumption { get; set; }
 
+            // Water cost
             public double WaterMoney { get; set; }
 
         }
@@ -275,7 +300,7 @@ namespace BC00463_datndt_assignment2
                 double consumption = double.Parse(selectedItem.SubItems[3].Text);
                 double waterMoney = double.Parse(selectedItem.SubItems[4].Text);
 
-                // Instantiate Form2 and pass the selected item details to it
+                // Initialize Form2 and pass the customer invoice details into it
                 Form2 form2 = new Form2(customerName, lastMonthWaterMeter, thisMonthWaterMeter, consumption, waterMoney);
                 form2.Show();
             }
@@ -283,7 +308,6 @@ namespace BC00463_datndt_assignment2
 
         private void cboArrange_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             // Retrieve the selected sort option
             string sortOption = cboArrange.SelectedItem.ToString();
 
@@ -291,82 +315,21 @@ namespace BC00463_datndt_assignment2
             switch (sortOption)
             {
                 case "Sort by Name (A-Z)":
-                    // Nested loop to sort invoices by CustomerName in ascending order
-                    for (int i = 0; i < Invoices.Count; i++)
-                    {
-                        Invoice temp = Invoices[i];
-                        for (int j = i + 1; j < Invoices.Count; j++)
-                        {
-                            if (string.Compare(Invoices[i].CustomerName, Invoices[j].CustomerName) > 0)
-                            {
-                                Invoices[i] = Invoices[j];
-                                Invoices[j] = temp;
-                                temp = Invoices[i];
-                            }
-                        }
-                    }
+                    Invoices = Invoices.OrderBy(i => i.CustomerName).ToList();
                     break;
 
                 case "Sort by Consumption (Low to High)":
-                    // Nested loop to sort invoices by Consumption in ascending order
-                    for (int i = 0; i < Invoices.Count - 1; i++)
-                    {
-                        for (int j = i + 1; j < Invoices.Count; j++)
-                        {
-                            if (Invoices[i].Consumption > Invoices[j].Consumption)
-                            {
-                                Invoice temp = Invoices[i];
-                                Invoices[i] = Invoices[j];
-                                Invoices[j] = temp;
-                            }
-                        }
-                    }
+                    Invoices = Invoices.OrderBy(i => i.Consumption).ToList();
                     break;
 
                 case "Sort by Consumption (High to Low)":
-                    // Nested loop to sort invoices by Consumption in descending order
-                    for (int i = 0; i < Invoices.Count; i++)
-                    {
-                        for (int j = i + 1; j < Invoices.Count; j++)
-                        {
-                            if (Invoices[i].Consumption < Invoices[j].Consumption)
-                            {
-                                Invoice temp = Invoices[i];
-                                Invoices[i] = Invoices[j];
-                                Invoices[j] = temp;
-                            }
-                        }
-                    }
+                    Invoices = Invoices.OrderByDescending(i => i.Consumption).ToList();
                     break;
                 case "Sort by Total Bill (Low to High)":
-                    // Nested loop to sort invoices by WaterMoney in ascending order
-                    for (int i = 0; i < Invoices.Count; i++)
-                    {
-                        for (int j = i + 1; j < Invoices.Count; j++)
-                        {
-                            if (Invoices[i].WaterMoney > Invoices[j].WaterMoney)
-                            {
-                                Invoice temp = Invoices[i];
-                                Invoices[i] = Invoices[j];
-                                Invoices[j] = temp;
-                            }
-                        }
-                    }
+                    Invoices = Invoices.OrderBy(i => i.WaterMoney).ToList();
                     break;
                 case "Sort by Total Bill (High to Low)":
-                    // Nested loop to sort invoices by WaterMoney in descending order
-                    for (int i = 0; i < Invoices.Count; i++)
-                    {
-                        for (int j = i + 1; j < Invoices.Count; j++)
-                        {
-                            if (Invoices[i].WaterMoney < Invoices[j].WaterMoney)
-                            {
-                                Invoice temp = Invoices[i];
-                                Invoices[i] = Invoices[j];
-                                Invoices[j] = temp;
-                            }
-                        }
-                    }
+                    Invoices = Invoices.OrderByDescending(i => i.WaterMoney).ToList();
                     break;
                 default:
                     break;
